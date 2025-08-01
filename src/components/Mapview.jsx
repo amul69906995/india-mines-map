@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
 import mines from "../data";
-import MarkerPopup from "./MArkerPopup";
+import MarkerPopup from "./MarkerPopup";
 const Mapview = () => {
     return (
         <MapContainer
