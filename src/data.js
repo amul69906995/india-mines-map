@@ -1,114 +1,213 @@
-const mines = [
+const mines =[
   {
-    lat: 23.6612,
-    lng: 86.4871,
-    location: "Jharia, Jharkhand",
-    options: [
-      { key: "type", label: "Type", data: "Coal Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "10 million tonnes" },
-      { key: "owner", label: "Owner", data: "Bharat Coking Coal Ltd." },
-      { key: "status", label: "Status", data: "Active" }
-    ]
+    "name": "Jharia Coalfield",
+    "state": "Jharkhand",
+    "minetype": "coal",
+    "lat": 23.7517,
+    "lng": 86.4203
   },
   {
-    lat: 22.5531,
-    lng: 84.9015,
-    location: "Barbil, Odisha",
-    options: [
-      { key: "type", label: "Type", data: "Iron Ore Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "6 million tonnes" },
-      { key: "owner", label: "Owner", data: "Tata Steel" },
-      { key: "status", label: "Status", data: "Active" }
-    ]
+    "name": "Raniganj Coalfield",
+    "state": "West Bengal / Jharkhand",
+    "minetype": "coal",
+    "lat": 23.75,
+    "lng": 87.0167
   },
   {
-    lat: 19.8700,
-    lng: 75.3200,
-    location: "Chincholi, Maharashtra",
-    options: [
-      { key: "type", label: "Type", data: "Gold Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "2 million tonnes" },
-      { key: "owner", label: "Owner", data: "Hutti Gold Mines Ltd." },
-      { key: "status", label: "Status", data: "Inactive" }
-    ]
+    "name": "Talcher Coalfield",
+    "state": "Odisha",
+    "minetype": "coal",
+    "lat": 20.95,
+    "lng": 85.22
   },
   {
-    lat: 23.8144,
-    lng: 91.2822,
-    location: "North Eastern Coalfields, Assam",
-    options: [
-      { key: "type", label: "Type", data: "Coal Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "1.5 million tonnes" },
-      { key: "owner", label: "Owner", data: "Coal India Ltd." },
-      { key: "status", label: "Status", data: "Active" }
-    ]
+    "name": "Korba Coalfield",
+    "state": "Chhattisgarh",
+    "minetype": "coal",
+    "lat": 22.2,
+    "lng": 82.3
   },
   {
-    lat: 22.4812,
-    lng: 85.8211,
-    location: "Noamundi, Jharkhand",
-    options: [
-      { key: "type", label: "Type", data: "Iron Ore Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "10 million tonnes" },
-      { key: "owner", label: "Owner", data: "Tata Steel" },
-      { key: "status", label: "Status", data: "Active" }
-    ]
+    "name": "East Bokaro Coalfield",
+    "state": "Jharkhand",
+    "minetype": "coal",
+    "lat": 23.7689,
+    "lng": 85.9716
   },
   {
-    lat: 19.1867,
-    lng: 82.3018,
-    location: "Bailadila, Chhattisgarh",
-    options: [
-      { key: "type", label: "Type", data: "Iron Ore Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "12 million tonnes" },
-      { key: "owner", label: "Owner", data: "NMDC" },
-      { key: "status", label: "Status", data: "Active" }
-    ]
+    "name": "Ib Valley Coalfield",
+    "state": "Odisha",
+    "minetype": "coal",
+    "lat": 21.68333,
+    "lng": 84.16667
   },
   {
-    lat: 25.0914,
-    lng: 87.9317,
-    location: "Rajmahal, Jharkhand",
-    options: [
-      { key: "type", label: "Type", data: "Coal Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "5 million tonnes" },
-      { key: "owner", label: "Owner", data: "Eastern Coalfields Ltd." },
-      { key: "status", label: "Status", data: "Active" }
-    ]
+    "name": "Singrauli Coalfield",
+    "state": "Madhya Pradesh / Uttar Pradesh",
+    "minetype": "coal",
+    "lat": 24.7,
+    "lng": 81.8
   },
   {
-    lat: 23.7337,
-    lng: 87.2640,
-    location: "Raniganj, West Bengal",
-    options: [
-      { key: "type", label: "Type", data: "Coal Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "3 million tonnes" },
-      { key: "owner", label: "Owner", data: "Eastern Coalfields Ltd." },
-      { key: "status", label: "Status", data: "Active" }
-    ]
+    "name": "Neyveli Lignite Mines",
+    "state": "Tamil Nadu",
+    "minetype": "coal",
+    "lat": 11.6,
+    "lng": 79.5
   },
   {
-    lat: 26.7440,
-    lng: 91.4985,
-    location: "Makum, Assam",
-    options: [
-      { key: "type", label: "Type", data: "Coal Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "1.2 million tonnes" },
-      { key: "owner", label: "Owner", data: "NEC (Coal India)" },
-      { key: "status", label: "Status", data: "Inactive" }
-    ]
+    "name": "Kothagudem Coalfield",
+    "state": "Telangana",
+    "minetype": "coal",
+    "lat": 17.55,
+    "lng": 80.65
   },
   {
-    lat: 20.2253,
-    lng: 85.8381,
-    location: "Kendujhar, Odisha",
-    options: [
-      { key: "type", label: "Type", data: "Chromite Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "2.5 million tonnes" },
-      { key: "owner", label: "Owner", data: "OMC" },
-      { key: "status", label: "Status", data: "Active" }
-    ]
+    "name": "Hasdeo Arand Coalfield",
+    "state": "Chhattisgarh",
+    "minetype": "coal",
+    "lat": 22.8,
+    "lng": 82.45
+  },
+  {
+    "name": "Jayant (OCP) Mine",
+    "state": "Madhya Pradesh",
+    "minetype": "coal",
+    "lat": 24.19468,
+    "lng": 82.68212
+  },
+  {
+    "name": "Amrapali Opencast Mine",
+    "state": "Jharkhand",
+    "minetype": "coal",
+    "lat": 23.88948,
+    "lng": 85.00171
+  },
+  {
+    "name": "Bhubaneshwari Opencast Mine",
+    "state": "Odisha",
+    "minetype": "coal",
+    "lat": 20.9617,
+    "lng": 85.1601
+  },
+  {
+    "name": "Dudhichua Opencast Mine",
+    "state": "Madhya Pradesh",
+    "minetype": "coal",
+    "lat": 24.16474,
+    "lng": 82.67287
+  },
+  {
+    "name": "Gevra Mine",
+    "state": "Chhattisgarh",
+    "minetype": "coal",
+    "lat": 22.35,
+    "lng": 82.65
+  },
+  {
+    "name": "Rampura Agucha Mine",
+    "state": "Rajasthan",
+    "minetype": "zinc lead",
+    "lat": 26.5,
+    "lng": 74.5
+  },
+  {
+    "name": "Malanjkhand Copper Project",
+    "state": "Madhya Pradesh",
+    "minetype": "copper",
+    "lat": 22.02,
+    "lng": 80.71
+  },
+  {
+    "name": "Khetri Copper Mine (Khetri Nagar)",
+    "state": "Rajasthan",
+    "minetype": "copper",
+    "lat": 27.98,
+    "lng": 75.8
+  },
+  {
+    "name": "Bailadila Iron Ore Mines (Kirandul/Bacheli)",
+    "state": "Chhattisgarh",
+    "minetype": "iron_ore",
+    "lat": 18.65,
+    "lng": 81.23
+  },
+  {
+    "name": "Joda/Keonjhar Iron Ore Mines",
+    "state": "Odisha",
+    "minetype": "iron_ore",
+    "lat": 22.19,
+    "lng": 86.16
+  },
+  {
+    "name": "Singhbhum Copper-Iron Mines",
+    "state": "Jharkhand",
+    "minetype": "copper_iron",
+    "lat": 22.5,
+    "lng": 85.5
+  },
+  {
+    "name": "Kudremukh Iron Ore Mines",
+    "state": "Karnataka",
+    "minetype": "iron_ore",
+    "lat": 13.13,
+    "lng": 75.17
+  },
+  {
+    "name": "Balaghat Copper Mine",
+    "state": "Madhya Pradesh",
+    "minetype": "copper",
+    "lat": 22.02,
+    "lng": 80.71
+  },
+  {
+    "name": "Koraput Bauxite Mines",
+    "state": "Odisha",
+    "minetype": "bauxite",
+    "lat": 18.85,
+    "lng": 83.02
+  },
+  {
+    "name": "Balangir Bauxite Mines",
+    "state": "Odisha",
+    "minetype": "bauxite",
+    "lat": 20.88,
+    "lng": 82.85
+  },
+  {
+    "name": "Bargarh Bauxite Mines",
+    "state": "Odisha",
+    "minetype": "bauxite",
+    "lat": 21.2,
+    "lng": 83.37
+  },
+  {
+    "name": "Sundergarh Manganese Mines",
+    "state": "Odisha",
+    "minetype": "manganese",
+    "lat": 22.12,
+    "lng": 84.03
+  },
+  {
+    "name": "Nagpur/Bhandara Manganese Mines",
+    "state": "Maharashtra",
+    "minetype": "manganese",
+    "lat": 21.54,
+    "lng": 79.68
+  },
+  {
+    "name": "Hazaribagh Copper Mine",
+    "state": "Jharkhand",
+    "minetype": "copper",
+    "lat": 23.98,
+    "lng": 85.35
+  },
+  {
+    "name": "Kollur Diamond Mine",
+    "state": "Andhra Pradesh",
+    "minetype": "diamond",
+    "lat": 16.7,
+    "lng": 80.05
   }
-];
-
+]
 export default mines;

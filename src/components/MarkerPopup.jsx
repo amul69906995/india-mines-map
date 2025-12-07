@@ -1,36 +1,52 @@
-import { useNavigate } from "react-router";
 
-const MarkerPopup = ({ options, lat, lng, location }) => {
-const navigate=useNavigate()
-    const handleClick = (key) => {
-         const url = `/${lat}/${lng}/${key}`;
-        navigate(url)// open in same tab
-        //window.open(url, "_blank");//opens in new tab
-    }
-    return (
-        <div>
-            <strong>{location}</strong>
-            <ul style={{ listStyle: "none", padding: 0, marginTop: "0.5rem" }}>
-                {options.map((opt, index) => (
-                    <li key={index}>
-                        <button
-                            onClick={() => handleClick(opt.key)}
-                            style={{
-                                background: "none",
-                                border: "none",
-                                color: "#0077cc",
-                                cursor: "pointer",
-                                textDecoration: "underline",
-                                marginBottom: "4px"
-                            }}
-                        >
-                            {opt.label}
-                        </button>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+const MarkerPopup = ({ mineType, name, lat, lng, location }) => {
+    console.log(mineType, name, lat, lng, location)
+  return (
+    <div style={styles.container}>
+      <h3 style={styles.title}>{location}</h3>
+
+      <div style={styles.row}>
+        <span style={styles.label}>Mine Type:</span>
+        <span style={styles.value}>{mineType}</span>
+      </div>
+
+      <div style={styles.row}>
+        <span style={styles.label}>Name:</span>
+        <span style={styles.value}>{name}</span>
+      </div>
+
+      <div style={styles.row}>
+        <span style={styles.label}>Coordinates:</span>
+        <span style={styles.value}>
+          {lat}° N, {lng}° E
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const styles = {
+  container: {
+    fontFamily: "Arial, sans-serif",
+    fontSize: "14px",
+    lineHeight: "1.5",
+  },
+  title: {
+    margin: "0 0 8px 0",
+    fontSize: "16px",
+    fontWeight: "bold",
+  },
+  row: {
+    marginBottom: "4px",
+  },
+  label: {
+    fontWeight: "600",
+    marginRight: "4px",
+  },
+  value: {
+    color: "#333",
+  },
 };
 
 export default MarkerPopup;
+
