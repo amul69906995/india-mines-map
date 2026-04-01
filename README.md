@@ -34,15 +34,13 @@ An interactive web app to visualize coal and metal mines across India using Reac
 ```js
 const mines = [
   {
-    lat: 23.6612,
-    lng: 86.4871,
-    location: "Jharia, Jharkhand",
-    options: [
-      { key: "type", label: "Type", data: "Coal Mine" },
-      { key: "capacity", label: "Annual Capacity", data: "10 million tonnes" },
-      { key: "owner", label: "Owner", data: "Bharat Coking Coal Ltd." }
-    ]
+    "name": "Ib Valley Coalfield",
+    "state": "Odisha",
+    "minetype": "coal",
+    "lat": 21.68333,
+    "lng": 84.16667
   },
+    
   // ...more
 ];
 ```

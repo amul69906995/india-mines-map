@@ -1,9 +1,22 @@
-
 const MarkerPopup = ({ mineType, name, lat, lng, location }) => {
-    console.log(mineType, name, lat, lng, location)
+
+  const handleOpenPDF = () => {
+    // convert name to file-friendly format if needed
+    const fileName = name.replace(/\s+/g, "_"); // e.g. "Jharia Mine" -> "Jharia_Mine"
+    
+    const pdfUrl = `/pdf/${fileName}.pdf`;
+
+    window.open(pdfUrl, "_blank"); // open in new tab
+  };
+
   return (
     <div style={styles.container}>
-      <h3 style={styles.title}>{location}</h3>
+      <h3 
+        style={{ ...styles.title, cursor: "pointer", color: "#007bff" }} 
+        onClick={handleOpenPDF}
+      >
+        {name}
+      </h3>
 
       <div style={styles.row}>
         <span style={styles.label}>Mine Type:</span>
@@ -11,8 +24,8 @@ const MarkerPopup = ({ mineType, name, lat, lng, location }) => {
       </div>
 
       <div style={styles.row}>
-        <span style={styles.label}>Name:</span>
-        <span style={styles.value}>{name}</span>
+        <span style={styles.label}>Location:</span>
+        <span style={styles.value}>{location}</span>
       </div>
 
       <div style={styles.row}>
@@ -24,7 +37,6 @@ const MarkerPopup = ({ mineType, name, lat, lng, location }) => {
     </div>
   );
 };
-
 const styles = {
   container: {
     fontFamily: "Arial, sans-serif",
