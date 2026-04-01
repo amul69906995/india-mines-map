@@ -72,6 +72,7 @@ const Mapview = () => {
             </Tooltip>
             <Popup>
               <MarkerPopup
+                hasPdf={mine.hasPdf}
                 mineType={mine.minetype}
                 name={mine.name}
                 lat={mine.lat}

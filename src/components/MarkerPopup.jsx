@@ -1,18 +1,21 @@
-const MarkerPopup = ({ mineType, name, lat, lng, location }) => {
+const MarkerPopup = ({mineType, name, lat, lng, location, hasPdf }) => {
 
   const handleOpenPDF = () => {
-    // convert name to file-friendly format if needed
-    const fileName = name.replace(/\s+/g, "_"); // e.g. "Jharia Mine" -> "Jharia_Mine"
-    
+    if (!hasPdf) {
+      alert("⚠️ PDF not available for this mine");
+      return;
+    }
+
+    const fileName = name.replace(/\s+/g, "_");
     const pdfUrl = `/pdf/${fileName}.pdf`;
 
-    window.open(pdfUrl, "_blank"); // open in new tab
+    window.open(pdfUrl, "_blank");
   };
 
   return (
     <div style={styles.container}>
-      <h3 
-        style={{ ...styles.title, cursor: "pointer", color: "#007bff" }} 
+      <h3
+        style={{ ...styles.title, cursor: hasPdf ? "pointer" : "not-allowed", color: hasPdf ? "#007bff" : "gray" }}
         onClick={handleOpenPDF}
       >
         {name}
@@ -34,6 +37,12 @@ const MarkerPopup = ({ mineType, name, lat, lng, location }) => {
           {lat}° N, {lng}° E
         </span>
       </div>
+
+      {!hasPdf && (
+        <div style={{ color: "red", marginTop: "6px" }}>
+          PDF not available
+        </div>
+      )}
     </div>
   );
 };
