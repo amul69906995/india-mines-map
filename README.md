@@ -1,9 +1,8 @@
 # 🗺️ India Mines Map – React + Leaflet App
 
 An interactive web app to visualize coal and metal mines across India using React, Leaflet, and static/dynamic data. Each mine is shown as a marker on the map. Hovering shows mine options, and clicking opens detailed information in a new tab.
-<img width="1918" height="942" alt="image" src="https://github.com/user-attachments/assets/12fabb1b-1cc3-42bd-b1e9-63b72e29a043" />
-
 ---
+<img width="1917" height="1026" alt="image" src="https://github.com/user-attachments/assets/1a33bc83-0e5f-41b7-a06e-e2f063293051" />
 
 ## 📌 Features
 
