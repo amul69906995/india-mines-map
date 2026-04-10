@@ -34,11 +34,13 @@ An interactive web app to visualize coal and metal mines across India using Reac
 ```js
 const mines = [
   {
-    "name": "Ib Valley Coalfield",
-    "state": "Odisha",
-    "minetype": "coal",
-    "lat": 21.68333,
-    "lng": 84.16667
+  "name": "Kollur Diamond Mine",
+    "state": "Andhra Pradesh",
+    "country": "India",
+    "minetype": "diamond",
+    "lat": 16.71667,
+    "lng": 80.05,
+    "hasPdf": true
   },
     
   // ...more
