@@ -19,17 +19,35 @@ L.Icon.Default.mergeOptions({
 
 const Mapview = () => {
   const [selectedType, setSelectedType] = useState("all"); // "all" | "coal" | "other"
+  const [selectedCountry, setSelectedCountry] = useState("all");
 
+    // 🔥 Dynamic country list
+  const countries = useMemo(() => {
+    return ["all", ...new Set(mines.map((m) => m.country))];
+  }, []);
+
+  // 🔥 Combined filtering
   const filteredMines = useMemo(() => {
-    if (selectedType === "all") return mines;
-    if (selectedType === "coal") return mines.filter((m) => m.minetype === "coal");
-    if (selectedType === "other") return mines.filter((m) => m.minetype !== "coal");
-    return mines;
-  }, [selectedType]);
+    return mines.filter((m) => {
+      const typeMatch =
+        selectedType === "all"
+          ? true
+          : selectedType === "coal"
+          ? m.minetype === "coal"
+          : m.minetype !== "coal";
 
-  return (
+      const countryMatch =
+        selectedCountry === "all"
+          ? true
+          : m.country === selectedCountry;
+
+      return typeMatch && countryMatch;
+    });
+  }, [selectedType, selectedCountry]);
+ return (
     <div style={{ position: "relative", height: "100vh", width: "100%" }}>
-      {/* Filter Overlay */}
+      
+      {/* 🔹 Filter Box */}
       <div
         style={{
           position: "absolute",
@@ -37,31 +55,53 @@ const Mapview = () => {
           right: 10,
           zIndex: 1000,
           background: "white",
-          padding: "8px 12px",
-          borderRadius: "6px",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+          padding: "10px 14px",
+          borderRadius: "8px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
           fontFamily: "sans-serif",
           fontSize: "14px",
+          minWidth: "180px",
         }}
       >
-        <label style={{ marginRight: 8, fontWeight: 600 }}>Filter:</label>
-        <select
-          value={selectedType}
-          onChange={(e) => setSelectedType(e.target.value)}
-        >
-          <option value="all">All Mines</option>
-          <option value="coal">Coal Only</option>
-          <option value="other">Other Types</option>
-        </select>
+        {/* Type Filter */}
+        <div style={{ marginBottom: "10px" }}>
+          <label style={{ fontWeight: 600, display: "block" }}>Type</label>
+          <select
+            value={selectedType}
+            onChange={(e) => setSelectedType(e.target.value)}
+            style={{ width: "100%", marginTop: "4px" }}
+          >
+            <option value="all">All Mines</option>
+            <option value="coal">Coal Only</option>
+            <option value="other">Other Types</option>
+          </select>
+        </div>
+
+        {/* Country Filter */}
+        <div>
+          <label style={{ fontWeight: 600, display: "block" }}>Country</label>
+          <select
+            value={selectedCountry}
+            onChange={(e) => setSelectedCountry(e.target.value)}
+            style={{ width: "100%", marginTop: "4px" }}
+          >
+            {countries.map((c, i) => (
+              <option key={i} value={c}>
+                {c === "all" ? "All Countries" : c}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
+      {/* 🔹 Map */}
       <MapContainer
         center={[22.5937, 78.9629]}
         zoom={5}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='© OpenStreetMap contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
