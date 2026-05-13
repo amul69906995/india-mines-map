@@ -350,6 +350,96 @@ const mines =[
     "lat": -30.775,
     "lng": 121.509,
     "hasPdf": true
+  },
+    {
+    "name": "Chavara Mine",
+    "state": "Kerala",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 8.991,
+    "lng": 76.536,
+    "hasPdf": true
+  },
+  {
+    "name": "Manavalakurichi Mine",
+    "state": "Tamil Nadu",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 8.133,
+    "lng": 77.300,
+    "hasPdf": true
+  },
+  {
+    "name": "Orissa Sands Complex",
+    "state": "Odisha",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 19.280,
+    "lng": 84.920,
+    "hasPdf": true
+  },
+  {
+    "name": "Balda Nickel Mines",
+    "state": "Odisha",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 21.133,
+    "lng": 85.750,
+    "hasPdf": true
+  },
+  {
+    "name": "Sukinda Chromite Mines",
+    "state": "Odisha",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 21.000,
+    "lng": 85.883,
+    "hasPdf": true
+  },
+  {
+    "name": "Khetri Copper Mines",
+    "state": "Rajasthan",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 28.040,
+    "lng": 75.790,
+    "hasPdf": true
+  },
+  {
+    "name": "Malanjkhand Copper Mine",
+    "state": "Madhya Pradesh",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 22.050,
+    "lng": 80.720,
+    "hasPdf": true
+  },
+  {
+    "name": "Panchpatmali Bauxite Mines",
+    "state": "Odisha",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 18.820,
+    "lng": 82.980,
+    "hasPdf": true
+  },
+  {
+    "name": "Jharkhand Graphite Mines",
+    "state": "Jharkhand",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 24.200,
+    "lng": 86.300,
+    "hasPdf": true
+  },
+  {
+    "name": "Mandya Rare Earths Plant",
+    "state": "Karnataka",
+    "country": "India",
+    "minetype": "rare earth",
+    "lat": 12.520,
+    "lng": 76.900,
+    "hasPdf": true
   }
 ]
 

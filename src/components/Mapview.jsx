@@ -8,7 +8,7 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-// Fix Leaflet's default icon issue with Webpack/Vite
+// Fix Leaflet icon issue
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -18,23 +18,24 @@ L.Icon.Default.mergeOptions({
 });
 
 const Mapview = () => {
-  const [selectedType, setSelectedType] = useState("all"); // "all" | "coal" | "other"
+  const [selectedType, setSelectedType] = useState("all");
   const [selectedCountry, setSelectedCountry] = useState("all");
 
-    // 🔥 Dynamic country list
+  // Dynamic mine types
+  const mineTypes = useMemo(() => {
+    return ["all", ...new Set(mines.map((m) => m.minetype))];
+  }, []);
+
+  // Dynamic countries
   const countries = useMemo(() => {
     return ["all", ...new Set(mines.map((m) => m.country))];
   }, []);
 
-  // 🔥 Combined filtering
+  // Filtering
   const filteredMines = useMemo(() => {
     return mines.filter((m) => {
       const typeMatch =
-        selectedType === "all"
-          ? true
-          : selectedType === "coal"
-          ? m.minetype === "coal"
-          : m.minetype !== "coal";
+        selectedType === "all" ? true : m.minetype === selectedType;
 
       const countryMatch =
         selectedCountry === "all"
@@ -44,10 +45,11 @@ const Mapview = () => {
       return typeMatch && countryMatch;
     });
   }, [selectedType, selectedCountry]);
- return (
+
+  return (
     <div style={{ position: "relative", height: "100vh", width: "100%" }}>
       
-      {/* 🔹 Filter Box */}
+      {/* Filter Box */}
       <div
         style={{
           position: "absolute",
@@ -63,23 +65,31 @@ const Mapview = () => {
           minWidth: "180px",
         }}
       >
-        {/* Type Filter */}
+        {/* Mine Type Filter */}
         <div style={{ marginBottom: "10px" }}>
-          <label style={{ fontWeight: 600, display: "block" }}>Type</label>
+          <label style={{ fontWeight: 600, display: "block" }}>
+            Mine Type
+          </label>
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
             style={{ width: "100%", marginTop: "4px" }}
           >
-            <option value="all">All Mines</option>
-            <option value="coal">Coal Only</option>
-            <option value="other">Other Types</option>
+            {mineTypes.map((type, i) => (
+              <option key={i} value={type}>
+                {type === "all"
+                  ? "All Mine Types"
+                  : type.charAt(0).toUpperCase() + type.slice(1)}
+              </option>
+            ))}
           </select>
         </div>
 
         {/* Country Filter */}
         <div>
-          <label style={{ fontWeight: 600, display: "block" }}>Country</label>
+          <label style={{ fontWeight: 600, display: "block" }}>
+            Country
+          </label>
           <select
             value={selectedCountry}
             onChange={(e) => setSelectedCountry(e.target.value)}
@@ -94,14 +104,14 @@ const Mapview = () => {
         </div>
       </div>
 
-      {/* 🔹 Map */}
+      {/* Map */}
       <MapContainer
         center={[22.5937, 78.9629]}
         zoom={5}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          attribution='© OpenStreetMap contributors'
+          attribution="© OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
